@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ShopClueWebApp.Models.Product>
+
+@{
+    ViewData["Title"] = "ViewCategoryProduct";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All @ViewData["CategoryName"] Products</h1>
+</div>
+<div class="row categories ">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-2">
+            <div class="col-md-12 categories_bg category-color text-center">
+                <img src="~/photos/@item.ProductID@item.ExtName" class="img-fluid" />
+                <h2 class="category_title text-overflow-elipsis">@item.ProductTitle</h2>
+                <h4 class="section_name">@item.Category.CategoryName</h4>
+                <p class="font-weight-bold">
+                    <span class="mr-2 text-muted"><s>$ @item.OriginalPrice</s></span>
+                    <span class="color-purple">$ @item.SalePrice</span>
+                </p>
+                <a asp-action="ViewDetails" asp-route-id="@item.ProductID" class="button button-primary">Details</a>
+            </div>
+        </div>
+    }
+</div>

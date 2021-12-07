@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ShopClueWebApp.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">All Category Details</h1>
+</div>
+<p>
+    <a asp-action="Create" class="button button-primary">Create New Category</a>
+</p>
+<hr />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                Cover Photo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width:20%">
+                    <img src="~/cphotos/@item.CategoryID@item.ExtName" class="img-fluid" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Section.SectionName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CategoryID">Edit</a>  |
+                    <a asp-action="Delete" asp-route-id="@item.CategoryID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

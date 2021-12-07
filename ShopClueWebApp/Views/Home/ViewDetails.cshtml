@@ -1,0 +1,30 @@
+﻿@model ShopClueWebApp.Models.Product
+
+@{
+    ViewData["Title"] = "ViewDetails";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Buy Product</h1>
+</div>
+<div class="row categories">
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-top" src="~/photos/@Model.ProductID@Model.ExtName" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">@Model.ProductTitle</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <h2 class="category_title">@Model.ProductTitle</h2>
+        <h4 class="section_name">@Model.Category.CategoryName</h4>
+        <p class="font-weight-bold">
+            <span class="mr-2 text-muted"><s>$ @Model.OriginalPrice</s></span>
+            <span class="color-purple">$ @Model.SalePrice</span>
+        </p>
+        <p class="lead">Description: @Model.Description</p>
+        <a class="button button-primary" target="_blank" href="@Model.Url">Buy Now</a>
+    </div>
+</div>
